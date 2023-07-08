@@ -1,6 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 const galleryJs = document.querySelector('.gallery');
-//galleryJs.addEventListener('click', makeBigPicture);
+
 
 
 let lii = ' ';
@@ -18,15 +18,15 @@ lii += itemText;
 
 
 })
-console.log(lii)
+
 galleryJs.insertAdjacentHTML('afterbegin',lii)
-console.log(galleryItems);
+
 
 let gallery = new SimpleLightbox('.gallery a', {
     captionsData:'alt',
     captionsDelay: 250
 });
-gallery.on('show.simplelightbox', function () {
+gallery.on('show.simplelightbox', function (e) {
 	
         if(e.target.nodeName !== 'IMG'){
             return;
@@ -39,7 +39,7 @@ gallery.on('show.simplelightbox', function () {
 });
 
 
-galleryJs.addEventListener('click', gallery.on('show.simplelightbox', function () {
+galleryJs.addEventListener('click', gallery.on('show.simplelightbox', function (e) {
 	
     if(e.target.nodeName !== 'IMG'){
         return;
